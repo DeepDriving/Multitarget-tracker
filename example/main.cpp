@@ -43,6 +43,9 @@ int main(int argc, char** argv)
 
     int exampleNum = parser.get<int>("example");
 
+    std::cout<<"exampleNum " <<exampleNum;
+ 
+    
     switch (exampleNum)
     {
     case 0:
@@ -83,21 +86,28 @@ int main(int argc, char** argv)
         yolo_detector.Process();
         break;
     }
-
-#ifdef BUILD_YOLO_LIB
-	case 6:
+ 
+//#ifdef BUILD_YOLO_LIB
+    case 6:
 	{
+        cout <<"here";
 		YoloDarknetExample yolo_detector(parser);
 		yolo_detector.Process();
 		break;
 	}
-#endif
+//#endif
 
+   
     default:
         std::cerr << "Wrong example number!" << std::endl;
         break;
+
+    YoloDarknetExample yolo_detector(parser);
+    yolo_detector.Process();
+
     }
 
+  
 
     cv::destroyAllWindows();
     return 0;
